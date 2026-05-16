@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTP 그림 심리 분석 앱</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>🏠🌳👧 HTP 마음 돋보기 🔍</h1>
+        <p>우리 반 친구들이 그린 집, 나무, 사람 그림으로 마음을 알아보아요!</p>
+      </header>
+      <main class="container">
+        <!-- 상단 컨트롤 -->
+        <div class="top-controls">
+          <button id="viewRecordsBtn" class="btn-secondary small-btn">📜 이전 분석 기록 보기</button>
+        </div>
+
+        <!-- 업로드 섹션 -->
+        <section class="card upload-section">
+          <h2>그림 업로드하기</h2>
+          <div class="input-group">
+            <label for="studentName">학생 이름:</label>
+            <input type="text" id="studentName" placeholder="예: 홍길동" required />
+          </div>
+          <div class="input-group file-upload-group">
+            <label for="imageUpload" class="file-upload-label">
+              <span id="uploadText">📁 여기를 눌러 그림을 선택하세요</span>
+            </label>
+            <input type="file" id="imageUpload" accept="image/*" />
+          </div>
+          <div class="preview-container hidden" id="previewContainer">
+            <img id="imagePreview" alt="업로드된 그림 미리보기" />
+            <button id="removeImageBtn" class="btn-secondary">다른 그림 선택하기</button>
+          </div>
+          
+          <button id="analyzeBtn" class="btn-primary" disabled>✨ 그림 분석하기 ✨</button>
+        </section>
+
+        <!-- 로딩 애니메이션 -->
+        <div id="loadingOverlay" class="hidden">
+          <div class="spinner"></div>
+          <p>AI 선생님이 그림을 꼼꼼히 살펴보고 있어요...<br>(약 10~20초 정도 걸려요!)</p>
+        </div>
+
+        <!-- 결과 섹션 -->
+        <section id="resultSection" class="card result-section hidden">
+          <h2>분석 결과</h2>
+          <div class="result-header">
+            <h3><span id="resultStudentName"></span> 학생의 마음</h3>
+            <p class="date" id="resultDate"></p>
+          </div>
+          <div class="result-content" id="resultContent">
+            <!-- 분석 결과가 여기에 표시됩니다. -->
+          </div>
+          <div class="result-actions">
+            <button id="saveDbBtn" class="btn-primary" style="margin-top: 15px;">💾 이 결과를 안전하게 저장하기</button>
+            <p id="saveStatus" class="status-msg hidden"></p>
+          </div>
+        </section>
+
+        <!-- 기록 보기 모달 (숨김 기본값) -->
+        <section id="recordsSection" class="card records-section hidden">
+          <div class="records-header">
+            <h2>📜 이전 분석 기록</h2>
+            <button id="closeRecordsBtn" class="btn-secondary small-btn">닫기</button>
+          </div>
+          <div id="recordsList" class="records-list">
+            <!-- 기록들이 여기에 표시됩니다 -->
+          </div>
+        </section>
+      </main>
+      
+      <footer>
+        <p>※ 이 분석은 참고용이며, 전문적인 심리 상담을 대체할 수 없습니다.</p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
